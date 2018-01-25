@@ -41,10 +41,101 @@ int arr[] = new int[10];
 - **Local variable** :
 - **Parameters** : 
 
+***
+
+#### equals() and hashCode() methods: 
+
+hashCode() method is used to get a unique integer for given object. This integer is used for determining the bucket location, when this object needs to be stored in some HashTable like data structure. By default, Object’s hashCode() method returns and integer representation of memory address where object is stored. In case of Integer wrapper class, it retunrs primitive int value and in case of String class, returns ```s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]```
+
+equals() method, as name suggest, is used to simply verify the equality of two objects. Default implementation simply check the object references of two objects to verify their equality.
+
+##### Overriding the default behavior
+
+Consider Employee.class 
+
+  ```java
+  public class Employee
+{
+    private Integer id;
+    private String firstname;
+ 
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public String getFirstname() {
+        return firstname;
+    }
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+}
+```
+```java
+public class EmployeeTest {
+    public static void main(String[] args) {
+        Employee e1 = new Employee();
+        Employee e2 = new Employee();
+ 
+        e1.setId(100);
+        e2.setId(100);
+ 
+        //Prints false in console
+        System.out.println(e1.equals(e2));
+    }
+}
+```
+For correct behaviour, we need to overrride equals()
+```java
+public boolean equals(Object o) {
+    if(o == null)
+    {
+        return false;
+    }
+    if (o == this)
+    {
+        return true;
+    }
+    if (getClass() != o.getClass())
+    {
+        return false;
+    }
+     
+    Employee e = (Employee) o;
+    return (this.getId() == e.getId());
+     
+}
+```
+Still we are not done yet, according to the contract: if you override equals() method then you must override hashCode() method.
+
+```java
+        Set<Employee> employees = new HashSet<Employee>();
+        employees.add(e1);
+        employees.add(e2);
+         
+        //Prints two objects
+        System.out.println(employees);
+ ```
+ In order to correct this, we need to override hashCode() method also
+ ```java
+ @Override
+public int hashCode()
+{
+    final int PRIME = 31;
+    int result = 1;
+    result = PRIME * result + getId();
+    return result;
+}
+```
+
 
 ## OOPS Concepts
 - [Encapsulation]()
 - [Inheritance]()
 - [Polymorphism]()
 - [Abstraction](#some-heading)
+
+
 
