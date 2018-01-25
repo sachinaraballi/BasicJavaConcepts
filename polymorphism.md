@@ -44,7 +44,7 @@ class Dog extends Animal {
         System.out.println("The static method in Dog");
     }
     
-    public class DoSomething {
+    public void DoSomething {
       testClassMethod(); // prints The static method in Dog
       Animal.testClassMethod(); // calls hidden method
     }
