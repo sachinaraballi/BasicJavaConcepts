@@ -31,6 +31,25 @@ An ability of a subclass to re-implement an instance method inherited from a sup
 8. **Constructors cannot be overridden.**
 Because constructors are not methods and a subclass’ constructor cannot have same name as a superclass’ one, so there’s nothing relates between constructors and overriding.
 9. **Abstract methods must be overridden by the first concrete (non-abstract) subclass.**
-10. **Abstract methods must be overridden by the first concrete (non-abstract) subclass.**
+10. **A static method in a subclass may hide another static one in a superclass, and that’s called hiding.**
+```java
+public class Animal {
+    public static void testClassMethod() {
+        System.out.println("The static method in Animal");
+    }
+}
+
+class Dog extends Animal {
+    public static void testClassMethod() {
+        System.out.println("The static method in Dog");
+    }
+    
+    public class DoSomething {
+      testClassMethod(); // prints The static method in Dog
+      Animal.testClassMethod(); // calls hidden method
+    }
+    }
+}
+```
 11. **The synchronized modifier has no effect on the rules of overriding.**
 12. **The strictfp modifier(float point related) has no effect on the rules of overriding.**
