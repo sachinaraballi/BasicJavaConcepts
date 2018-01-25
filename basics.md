@@ -11,7 +11,7 @@ Benefits of bundling :
 
 #### Creating an Object (Instantiate a Class)
 This can be done in two ways 
-- new operator: The new operator instantiates a class by dynamically allocating(run time) memory for a new object and returning a reference to that memory. This reference is then stored in the variable.
+1.  new operator: The new operator instantiates a class by dynamically allocating(run time) memory for a new object and returning a reference to that memory. This reference is then stored in the variable.
 ```java 
 Object variable = new Object();
 ```
@@ -19,7 +19,7 @@ In Java, Array is treated as Object, so we use new keyword to create an Array e.
 ```java 
 int arr[] = new int[10];
 ```
-- Reflection
+2. Reflection
 
 
 
