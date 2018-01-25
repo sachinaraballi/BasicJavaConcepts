@@ -29,7 +29,7 @@ int arr[] = new int[10];
 ### Class: 
 *A class is a blueprint or prototype from which objects are created.*
 
-### Interface:
+### Interface
 *An interface is a contract between a class and the outside world. When a class implements an interface, it promises to provide the behavior published by that interface.*
 
 ---
@@ -135,7 +135,7 @@ public int hashCode()
 - [Encapsulation]()
 - [Inheritance]()
 - [Polymorphism]()
-- [Abstraction](#some-heading)
+- [Abstraction](#interface)
 
 
 
