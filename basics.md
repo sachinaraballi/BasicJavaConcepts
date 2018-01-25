@@ -15,6 +15,9 @@ This can be done in two ways
 ```java 
 Object variable = new Object();
 ```
+![](https://docs.oracle.com/javase/tutorial/figures/java/objects-oneRef.gif)
+
+
 In Java, Array is treated as Object, so we use new keyword to create an Array e.g 
 ```java 
 int arr[] = new int[10];
@@ -29,7 +32,14 @@ int arr[] = new int[10];
 ### Interface:
 *An interface is a contract between a class and the outside world. When a class implements an interface, it promises to provide the behavior published by that interface.*
 
+---
 
+## Variables:
+
+- **Instance variablev(Non-Static Fields)** : 
+- **Class variable(Static Fields)** :
+- **Local variable** :
+- **Parameters** : 
 
 
 ## OOPS Concepts
