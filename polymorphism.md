@@ -27,7 +27,7 @@ An ability of a subclass to re-implement an instance method inherited from a sup
 4. **The overriding method must have same return type (or subtype).**
 5. **The overriding method must not have more restrictive access modifier.**
 6. **The overriding method must not throw new or broader checked exceptions.**
-7. ** Use the super keyword to invoke the overridden method from a subclass.**
+7. **Use the super keyword to invoke the overridden method from a subclass.**
 8. **Constructors cannot be overridden.**
 Because constructors are not methods and a subclass’ constructor cannot have same name as a superclass’ one, so there’s nothing relates between constructors and overriding.
 9. **Abstract methods must be overridden by the first concrete (non-abstract) subclass.**
