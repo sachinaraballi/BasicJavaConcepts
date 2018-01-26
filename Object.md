@@ -1,6 +1,26 @@
-## Different Ways to Create an Object
+## Object: 
+*An object is a software bundle of related **state**(fields) and **behavior**(methods).*
+
+Benefits of bundling :
+- **Modularity:** The source code for an object can be written and maintained independently of the source code for other objects. Once created, an object can be easily passed around inside the system.
+- **Information-hiding:** The internal implementation of an Object remains hidden from the outside world.
+- **Code re-use:** This allows specialists to implement/test/debug complex, task-specific objects, which you can then trust to run in your own code.
+- **Pluggability and debugging ease:** If a particular object turns out to be problematic, you can simply remove it from your application and plug in a different object as its replacement. 
+
+
+### Different Ways to Create an Object (Instantiate a Class)
 
 1. **new keyword**
+The new operator instantiates a class by dynamically allocating(run time) memory for a new object and returning a reference to that memory. This reference is then stored in the variable.
+```java 
+Object variable = new Object();
+```
+![objects-oneRef.gif](https://docs.oracle.com/javase/tutorial/figures/java/objects-oneRef.gif)
+
+In Java, Array is treated as Object, so we use new keyword to create an Array e.g 
+```java 
+int arr[] = new int[10];
+```
 
 2. **class.forName()**
 ```java
