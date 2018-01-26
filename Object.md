@@ -83,7 +83,21 @@ public class Test {
     }
 }
 ```
+## Object Class as a Super Class 
 
+|Methods |	Description| Default Implementation | 
+|---|---|---|
+|public int hashCode()|	This method returns the hashcode of the java object.||
+|public boolean equals(Object obj)|	Compares the given object to this object.||
+|protected Object clone() throws CloneNotSupportedException	|This method creates and returns the exact copy (clone) of this object.||
+|public String toString()	|Returns the string representation of this object.||
+|public final Class getClass()|	Returns the Class class object of the object.||
+|public final void notify()	|This method wakes up a single thread that is waiting on this object’s monitor.||
+|public final void notifyAll()	|This method wakes up all threads that are waiting on this object’s monitor.||
+|public final void wait(long timeout)throws InterruptedException	|This method makes the current thread to wait for the specified milliseconds, until another thread notifies (invokes notify() or notifyAll() method).||
+|public final void wait(long timeout,int nanos)throws InterruptedException|	This method makes the current thread to wait for the specified miliseconds and nanoseconds, until another thread notifies (invokes notify() or notifyAll() method).||
+|public final void wait()throws InterruptedException	|This method makes the current thread to wait, until another thread notifies (invokes notify() or notifyAll() method).||
+|protected void finalize()throws Throwable	|This method is invoked by the garbage collector before object is being garbage collected.||
 
 ### Marker Interface
 Interfce with no fields and methods, usually helps the JVM compiler
