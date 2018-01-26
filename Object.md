@@ -39,9 +39,34 @@ public class Test {
 4. **Object Deserialization**
 5. **clone() method**
 The *clone()* method is used to create a copy of an existing object, in order to use clone() method the corresponding class should have implemented _Cloneable_ interface a [Marker Interface](#marker_interface).
+```java
+public class Test {
+    class Animal implements Cloneable {
+        // to avoid "The method clone() from the type Object is not visible"
+        // error
+        @Override
+        protected Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Test test = new Test();
+        // To avoid "No enclosing instance of type Test is accessible." error
+        Animal a1 = test.new Animal();
+        try {
+            Animal a2 = (Animal) a1.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+6. **
 
 
 ### Marker Interface
 Interfce with no fields and methods, usually helps the JVM compiler
-e. g. Clonable, Serializable
+e. g. Cloneable, Serializable
 
