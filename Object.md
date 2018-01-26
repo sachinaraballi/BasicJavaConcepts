@@ -89,16 +89,16 @@ public class Test {
 
 |Methods |	Description| Default Implementation | 
 |---|---|---|
-|public int [hashCode()](#equals-and-hashcode-methods)|	This method returns the hashcode of the java object.|`public native int hashCode();`|
+|public int [hashCode()](#equals-and-hashcode-methods)|Returns the hashcode of the java object.|`public native int hashCode();`|
 |public boolean [equals(Object obj)](#equals-and-hashcode-methods)|	Compares the given object to this object.|`public boolean equals(Object obj){return (this == obj); }`|
-|protected Object clone() throws CloneNotSupportedException	|This method creates and returns the exact copy (clone) of this object.||
+|protected Object clone() throws CloneNotSupportedException	|Creates and returns the exact copy (clone) of this object.||
 |public String toString()	|Returns the string representation of this object.|`public String toString() {return getClass().getName() + "@" + Integer.toHexString(hashCode());}`|
 |public final Class getClass()|	Returns the Class class object of the object.|`public final native Class<?> getClass();`|
-|public final void notify()	|This method wakes up a single thread that is waiting on this object’s monitor.||
-|public final void notifyAll()	|This method wakes up all threads that are waiting on this object’s monitor.||
-|public final void wait(long timeout)throws InterruptedException	|This method makes the current thread to wait for the specified milliseconds, until another thread notifies (invokes notify() or notifyAll() method).||
-|public final void wait(long timeout,int nanos)throws InterruptedException|	This method makes the current thread to wait for the specified miliseconds and nanoseconds, until another thread notifies (invokes notify() or notifyAll() method).||
-|public final void wait()throws InterruptedException	|This method makes the current thread to wait, until another thread notifies (invokes notify() or notifyAll() method).||
+|public final void notify()	|Wakes up a single thread that is waiting on this object’s monitor.||
+|public final void notifyAll()	|Wakes up all threads that are waiting on this object’s monitor.||
+|public final void wait(long timeout)throws InterruptedException	|Makes the current thread to wait for the specified milliseconds, until another thread notifies (invokes notify() or notifyAll() method).||
+|public final void wait(long timeout,int nanos)throws InterruptedException|	Makes the current thread to wait for the specified miliseconds and nanoseconds, until another thread notifies (invokes notify() or notifyAll() method).||
+|public final void wait()throws InterruptedException	|Makes the current thread to wait, until another thread notifies (invokes notify() or notifyAll() method).||
 |protected void finalize()throws Throwable	|This method is invoked by the garbage collector before object is being garbage collected.||
 
 #### equals and hashCode methods 
