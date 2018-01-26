@@ -7,7 +7,7 @@ Benefits of bundling :
 - **Code re-use:** This allows specialists to implement/test/debug complex, task-specific objects, which you can then trust to run in your own code.
 - **Pluggability and debugging ease:** If a particular object turns out to be problematic, you can simply remove it from your application and plug in a different object as its replacement. 
 
-
+***
 ### Different Ways to Create an Object (Instantiate a Class)
 
 1. **new keyword**
@@ -58,7 +58,8 @@ public class Test {
 ```
 4. **Object Deserialization**
 5. **clone() method**
-The *clone()* method is used to create a copy of an existing object, in order to use clone() method the corresponding class should have implemented _Cloneable_ interface a [Marker Interface](#marker_interface).
+The *clone()* method is used to create a copy of an existing object, in order to use clone() method the corresponding class should have implemented _Cloneable_ interface a [Marker Interface](Object.md#marker_interface).
+
 ```java
 public class Test {
     class Animal implements Cloneable {
@@ -83,6 +84,7 @@ public class Test {
     }
 }
 ```
+***
 ## Object Class as a Super Class 
 
 |Methods |	Description| Default Implementation | 
@@ -99,6 +101,93 @@ public class Test {
 |public final void wait()throws InterruptedException	|This method makes the current thread to wait, until another thread notifies (invokes notify() or notifyAll() method).||
 |protected void finalize()throws Throwable	|This method is invoked by the garbage collector before object is being garbage collected.||
 
+#### equals() and hashCode() methods: 
+
+hashCode() method is used to get a unique integer for given object. This integer is used for determining the bucket location, when this object needs to be stored in some HashTable like data structure. By default, Object’s hashCode() method returns and integer representation of memory address where object is stored. In case of Integer wrapper class, it retunrs primitive int value and in case of String class, returns ```s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]```
+
+equals() method, as name suggest, is used to simply verify the equality of two objects. Default implementation simply check the object references of two objects to verify their equality.
+
+##### Overriding the default behavior
+
+Consider Employee.class 
+
+  ```java
+  public class Employee
+{
+    private Integer id;
+    private String firstname;
+ 
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public String getFirstname() {
+        return firstname;
+    }
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+}
+```
+```java
+public class EmployeeTest {
+    public static void main(String[] args) {
+        Employee e1 = new Employee();
+        Employee e2 = new Employee();
+ 
+        e1.setId(100);
+        e2.setId(100);
+ 
+        //Prints false in console
+        System.out.println(e1.equals(e2));
+    }
+}
+```
+For correct behaviour, we need to overrride equals()
+```java
+public boolean equals(Object o) {
+    if(o == null)
+    {
+        return false;
+    }
+    if (o == this)
+    {
+        return true;
+    }
+    if (getClass() != o.getClass())
+    {
+        return false;
+    }
+     
+    Employee e = (Employee) o;
+    return (this.getId() == e.getId());
+     
+}
+```
+Still we are not done yet, according to the contract: if you override equals() method then you must override hashCode() method.
+
+```java
+        Set<Employee> employees = new HashSet<Employee>();
+        employees.add(e1);
+        employees.add(e2);
+         
+        //Prints two objects
+        System.out.println(employees);
+ ```
+ In order to correct this, we need to override hashCode() method also
+ ```java
+ @Override
+public int hashCode()
+{
+    final int PRIME = 31;
+    int result = 1;
+    result = PRIME * result + getId();
+    return result;
+}
+```
+***
 ### Marker Interface
 Interfce with no fields and methods, usually helps the JVM compiler
 e. g. Cloneable, Serializable
