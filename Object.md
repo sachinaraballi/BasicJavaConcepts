@@ -87,11 +87,11 @@ public class Test {
 
 |Methods |	Description| Default Implementation | 
 |---|---|---|
-|public int hashCode()|	This method returns the hashcode of the java object.||
-|public boolean equals(Object obj)|	Compares the given object to this object.||
+|public int hashCode()|	This method returns the hashcode of the java object.|`public native int hashCode();`|
+|public boolean equals(Object obj)|	Compares the given object to this object.|`public boolean equals(Object obj){return (this == obj); }`|
 |protected Object clone() throws CloneNotSupportedException	|This method creates and returns the exact copy (clone) of this object.||
-|public String toString()	|Returns the string representation of this object.||
-|public final Class getClass()|	Returns the Class class object of the object.||
+|public String toString()	|Returns the string representation of this object.|`public String toString() {return getClass().getName() + "@" + Integer.toHexString(hashCode());}`|
+|public final Class getClass()|	Returns the Class class object of the object.|`public final native Class<?> getClass();`|
 |public final void notify()	|This method wakes up a single thread that is waiting on this object’s monitor.||
 |public final void notifyAll()	|This method wakes up all threads that are waiting on this object’s monitor.||
 |public final void wait(long timeout)throws InterruptedException	|This method makes the current thread to wait for the specified milliseconds, until another thread notifies (invokes notify() or notifyAll() method).||
