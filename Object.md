@@ -89,8 +89,8 @@ public class Test {
 
 |Methods |	Description| Default Implementation | 
 |---|---|---|
-|public int [hashCode()](#equals()-and-hashCode()-methods)|	This method returns the hashcode of the java object.|`public native int hashCode();`|
-|public boolean [equals(Object obj)](#equals()-and-hashCode()-methods)|	Compares the given object to this object.|`public boolean equals(Object obj){return (this == obj); }`|
+|public int [hashCode()](#equals-and-hashcode-methods)|	This method returns the hashcode of the java object.|`public native int hashCode();`|
+|public boolean [equals(Object obj)](#equals-and-hashcode-methods)|	Compares the given object to this object.|`public boolean equals(Object obj){return (this == obj); }`|
 |protected Object clone() throws CloneNotSupportedException	|This method creates and returns the exact copy (clone) of this object.||
 |public String toString()	|Returns the string representation of this object.|`public String toString() {return getClass().getName() + "@" + Integer.toHexString(hashCode());}`|
 |public final Class getClass()|	Returns the Class class object of the object.|`public final native Class<?> getClass();`|
@@ -101,7 +101,7 @@ public class Test {
 |public final void wait()throws InterruptedException	|This method makes the current thread to wait, until another thread notifies (invokes notify() or notifyAll() method).||
 |protected void finalize()throws Throwable	|This method is invoked by the garbage collector before object is being garbage collected.||
 
-#### equals() and hashCode() methods 
+#### equals and hashCode methods 
 
 hashCode() method is used to get a unique integer for given object. This integer is used for determining the bucket location, when this object needs to be stored in some HashTable like data structure. By default, Object’s hashCode() method returns and integer representation of memory address where object is stored. In case of Integer wrapper class, it retunrs primitive int value and in case of String class, returns ```s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]```
 
