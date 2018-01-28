@@ -21,3 +21,54 @@ Next comes the Java extension class loader. We can store extension libraries, th
 
 he application class loader is responsible for loading all of the classes kept in the path corresponding to the **`java.class.path`** system property.
 
+
+## The Java Class Loading Mechanism
+
+The Java platform uses a **delegation model** for loading classes. The basic idea is that every class loader has a **"parent"** class loader. When loading a class, a class loader first **"delegates"** the search for the class to its parent class loader before attempting to find the class itself.
+Here are some highlights of the class-loading API:
+
+- Constructors in **`java.lang.ClassLoader`** and its subclasses allow you to specify a parent when you instantiate a new class loader. If you don't explicitly specify a parent, the virtual machine's system class loader will be assigned as the default parent.
+- The **`loadClass`** method in **`ClassLoader`** performs these tasks, in order, when called to load a class:
+1. If a class has already been loaded, it returns it.
+2. Otherwise, it delegates the search for the new class to the parent class loader.
+3. If the parent class loader does not find the class, **`loadClass`** calls the method **`findClass`** to find and load the class.
+```java
+protected synchronized Class<?> loadClass
+    (String name, boolean resolve)
+    throws ClassNotFoundException{
+
+    // First check if the class is already loaded
+    Class c = findLoadedClass(name);
+    if (c == null) {
+        try {
+            if (parent != null) {
+                c = parent.loadClass(name, false);
+            } else {
+                c = findBootstrapClass0(name);
+            }
+        } catch (ClassNotFoundException e) {
+            // If still not found, then invoke
+            // findClass to find the class.
+            c = findClass(name);
+        }
+    }
+    if (resolve) {
+	    resolveClass(c);
+    }
+    return c;
+}
+```
+
+- The **`findClass`** method of **`ClassLoader`** searches for the class in the current class loader if the class wasn't found by the parent class loader. You will probably want to override this method when you instantiate a class loader subclass in your application.
+
+```java
+public class MyClassLoader extends ClassLoader{
+
+    public MyClassLoader(){
+        super(MyClassLoader.class.getClassLoader());
+    }
+}
+```
+
+- The class **`java.net.URLClassLoader`** serves as the basic class loader for extensions and other JAR files, overriding the findClass method of **`java.lang.ClassLoader`** to search one or more specified URLs for classes and resources.
+
