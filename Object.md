@@ -57,6 +57,12 @@ public class Test {
 }
 ```
 4. **Object Deserialization**
+
+```java
+ObjectInputStream objStream = new ObjectInputStream(inputStream);
+ NewClass obj = (NewClass ) inStream.readObject();
+ ```
+ 
 5. **clone() method**
 The *clone()* method is used to create a copy of an existing object, in order to use clone() method the corresponding class should have implemented _Cloneable_ interface a [Marker Interface](#marker-interface).
 
