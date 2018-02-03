@@ -1,3 +1,3 @@
 # Exception Handling
 
-![heirarchy](#)
+![heirarchy](images/exception_handling_heirarchy.png)
