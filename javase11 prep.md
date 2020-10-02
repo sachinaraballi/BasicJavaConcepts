@@ -1,4 +1,4 @@
-## Access Modifiers :
+**Access Modifiers :**
 
 Public - accessible from all classes </br>
 Private - only in same class </br>
@@ -16,6 +16,7 @@ int - 32 bits </br>
 long - 64 bits (ends with L/l) </br>
 
 * we can represent binary values using int 0b101010 -- 42 
+* ~a = -(a+1)
 
 **Float pointing numbers :** </br>
 float - 32 bits (ends with F/f) </br>
